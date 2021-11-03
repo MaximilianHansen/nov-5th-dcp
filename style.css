@@ -1,0 +1,28 @@
+
+.heading {
+    text-decoration: underline;
+    font-size: xx-large;
+}
+
+.heading2 {
+    text-decoration: underline;
+    font-size: x-large;
+}
+.main-text {
+    display: flex;
+}
+
+.panel {
+    display:flex;
+    flex:1;
+    
+}
+
+.panel2 {
+    flex: 5;
+    font-size : large;
+}
+
+img {
+    max-width: 80%;
+}
