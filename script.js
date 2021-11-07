@@ -1,32 +1,61 @@
+const num = 48975;
+const num1 =489;
 
-const string1 = "()())()"
-const string2 = ")("
+function numLength (e) {
+    x = String(e).length;
+    return x
+}
 
-const string3 = "((()()("
+function convertNumToArray(e) {
+    let arrayX = [];
+    let i = 0;
+    while (i < numLength(e)) {
+        let stringy = String(e);
+        arrayX.push(stringy[i]);
+        i++
+    }
+    return arrayX
+}
 
 
-function handleString(e) {
-    let chrCount = 0;
-    let text = e;
-    let i = 0
-    while ( i < e.length) {
-        if (text.substr(i, 1) === ")" ) { 
-            chrCount++ ;
-            //console.log(chrCount, i);
-            i++ ;
+function getPermutations(array) {
+
+        let foundPermutations = [];
+
+        function perms(subArr, currentPerm) {
+
+            if (subArr.length === 0) {
+                foundPermutations.push(currentPerm.join(""));
+            }
+
+            for (let i = 0; i < subArr.length; i++) {
+
+                const newSubArr = subArr.slice(0, i).concat(subArr.slice(i + 1));
+
+                const newCurrentPerm = currentPerm.concat(subArr[i]);
+
+                perms(newSubArr, newCurrentPerm);
         }
-        else {
-            if (text.substr(i+1 , 1) === ")" && i != text.length) {
-                i = i + 2
-            } 
-        else {
-            chrCount++ 
-            //console.log(chrCount, i, "option 3")
-            i++
-        }
-        }
-    } 
-    
-    console.log(`remove ${chrCount}`)
+
+       
+    }
+
+    perms(array, []);
+
+    return foundPermutations.sort();
 
 }
+
+
+
+function run(e) {
+    newArr = getPermutations(convertNumToArray(e));
+    console.log(newArr);
+    i = newArr.indexOf(String(e));
+    console.log(` the next permutation of ${e} is ${newArr[i+1]} `)
+}
+
+
+
+
+
